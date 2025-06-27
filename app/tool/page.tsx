@@ -41,6 +41,91 @@ interface GeneratedContent {
   }
 }
 
+// Add this helper function before the component
+const parseStructuredContent = (content: string) => {
+  const sections: { [key: string]: string } = {}
+  const lines = content.split("\n")
+  let currentSection = ""
+  let currentContent: string[] = []
+
+  for (const line of lines) {
+    if (line.startsWith("=== ") && line.endsWith(" ===")) {
+      // Save previous section
+      if (currentSection && currentContent.length > 0) {
+        sections[currentSection] = currentContent.join("\n").trim()
+      }
+      // Start new section
+      currentSection = line.replace(/=== | ===/g, "")
+      currentContent = []
+    } else if (currentSection) {
+      currentContent.push(line)
+    }
+  }
+
+  // Save last section
+  if (currentSection && currentContent.length > 0) {
+    sections[currentSection] = currentContent.join("\n").trim()
+  }
+
+  return sections
+}
+
+// Add this helper function to get section titles
+const getSectionTitle = (sectionKey: string, platform: Platform) => {
+  const titles: { [key: string]: { [key: string]: string } } = {
+    twitter: {
+      HOOK: "🎯 Opening Hook",
+      THREAD: "🧵 Thread Content",
+      CALL_TO_ACTION: "📢 Call to Action",
+      HASHTAGS: "🏷️ Hashtags",
+    },
+    linkedin: {
+      HOOK: "🎯 Opening Hook",
+      MAIN_CONTENT: "📝 Main Content",
+      KEY_INSIGHTS: "💡 Key Insights",
+      CALL_TO_ACTION: "📢 Call to Action",
+      HASHTAGS: "🏷️ Hashtags",
+    },
+    youtube: {
+      HOOK: "🎯 Opening Hook",
+      INTRODUCTION: "👋 Introduction",
+      MAIN_CONTENT: "📹 Main Content",
+      KEY_POINTS: "💡 Key Points",
+      CALL_TO_ACTION: "📢 Call to Action",
+      DESCRIPTION: "📝 Description",
+      HASHTAGS: "🏷️ Hashtags",
+    },
+    instagram: {
+      HOOK: "🎯 Opening Hook",
+      MAIN_CAPTION: "📝 Main Caption",
+      CALL_TO_ACTION: "📢 Call to Action",
+      HASHTAGS: "🏷️ Hashtags",
+      VISUAL_SUGGESTION: "📸 Visual Suggestion",
+    },
+    email: {
+      SUBJECT_LINE: "📧 Subject Line",
+      PREVIEW_TEXT: "👀 Preview Text",
+      GREETING: "👋 Greeting",
+      HOOK: "🎯 Opening Hook",
+      MAIN_CONTENT: "📝 Main Content",
+      KEY_TAKEAWAYS: "💡 Key Takeaways",
+      CALL_TO_ACTION: "📢 Call to Action",
+      SIGNATURE: "✍️ Signature",
+    },
+    tiktok: {
+      HOOK: "🎯 Opening Hook",
+      MAIN_CONTENT: "📹 Main Content",
+      VISUAL_CUES: "🎬 Visual Cues",
+      TEXT_OVERLAYS: "📱 Text Overlays",
+      CALL_TO_ACTION: "📢 Call to Action",
+      AUDIO_SUGGESTION: "🎵 Audio Suggestion",
+      HASHTAGS: "🏷️ Hashtags",
+    },
+  }
+
+  return titles[platform]?.[sectionKey] || sectionKey
+}
+
 export default function ContentRepurposingTool() {
   const [blogContent, setBlogContent] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
@@ -273,7 +358,7 @@ export default function ContentRepurposingTool() {
             <Button
               variant="outline"
               size="sm"
-              className="mb-4 glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group"
+              className="mb-4 glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group bg-transparent"
             >
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
               Back to Home
@@ -661,14 +746,101 @@ export default function ContentRepurposingTool() {
                       ) : (
                         <Copy className="w-3 md:w-4 h-3 md:h-4 group-hover:animate-pulse" />
                       )}
-                      <span>{copied ? "Copied!" : "Copy"}</span>
+                      <span>{copied ? "Copied!" : "Copy All"}</span>
                     </Button>
                   </div>
-                  <div className="glass rounded-lg p-4 md:p-6 border border-white/10 group-hover:bg-white/10 transition-colors duration-300 group-hover:shadow-inner">
-                    <pre className="whitespace-pre-wrap text-sm md:text-base font-mono text-gray-200 overflow-x-auto leading-relaxed">
-                      {generatedContent.content}
-                    </pre>
-                  </div>
+
+                  {(() => {
+                    const sections = parseStructuredContent(generatedContent.content)
+                    const hasStructuredContent = Object.keys(sections).length > 0
+
+                    if (!hasStructuredContent) {
+                      // Fallback to original format if parsing fails
+                      return (
+                        <div className="glass rounded-lg p-4 md:p-6 border border-white/10 group-hover:bg-white/10 transition-colors duration-300 group-hover:shadow-inner">
+                          <pre className="whitespace-pre-wrap text-sm md:text-base font-mono text-gray-200 overflow-x-auto leading-relaxed">
+                            {generatedContent.content}
+                          </pre>
+                        </div>
+                      )
+                    }
+
+                    return (
+                      <div className="space-y-4">
+                        {Object.entries(sections).map(([sectionKey, sectionContent], index) => (
+                          <div
+                            key={sectionKey}
+                            className="glass rounded-lg border border-white/10 overflow-hidden hover:bg-white/5 transition-all duration-300"
+                          >
+                            {/* Section Header */}
+                            <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+                              <h4 className="font-semibold text-white text-sm md:text-base flex items-center gap-2">
+                                {getSectionTitle(sectionKey, generatedContent.platform)}
+                              </h4>
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => copyToClipboard(sectionContent)}
+                                className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
+                              >
+                                <Copy className="w-3 h-3 mr-1" />
+                                Copy
+                              </Button>
+                            </div>
+
+                            {/* Section Content */}
+                            <div className="p-4 md:p-6">
+                              {sectionKey === "HASHTAGS" ? (
+                                <div className="flex flex-wrap gap-2">
+                                  {sectionContent
+                                    .split(" ")
+                                    .filter((tag) => tag.trim())
+                                    .map((hashtag, tagIndex) => (
+                                      <Badge
+                                        key={tagIndex}
+                                        variant="outline"
+                                        className="text-xs bg-blue-500/20 border-blue-400/30 text-blue-300 hover:bg-blue-500/30 transition-colors cursor-pointer"
+                                        onClick={() => copyToClipboard(hashtag)}
+                                      >
+                                        {hashtag.startsWith("#") ? hashtag : `#${hashtag}`}
+                                      </Badge>
+                                    ))}
+                                </div>
+                              ) : sectionKey === "KEY_INSIGHTS" ||
+                                sectionKey === "KEY_POINTS" ||
+                                sectionKey === "KEY_TAKEAWAYS" ? (
+                                <div className="space-y-2">
+                                  {sectionContent
+                                    .split("\n")
+                                    .filter((line) => line.trim())
+                                    .map((point, pointIndex) => (
+                                      <div key={pointIndex} className="flex items-start gap-2">
+                                        <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                                        <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+                                          {point.replace(/^[-•*]\s*/, "")}
+                                        </p>
+                                      </div>
+                                    ))}
+                                </div>
+                              ) : sectionKey === "SUBJECT_LINE" || sectionKey === "PREVIEW_TEXT" ? (
+                                <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-lg p-3 border border-green-400/20">
+                                  <p className="text-sm md:text-base text-green-200 font-medium">{sectionContent}</p>
+                                </div>
+                              ) : sectionKey === "VISUAL_SUGGESTION" || sectionKey === "AUDIO_SUGGESTION" ? (
+                                <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-3 border border-yellow-400/20">
+                                  <p className="text-sm md:text-base text-yellow-200">{sectionContent}</p>
+                                </div>
+                              ) : (
+                                <pre className="whitespace-pre-wrap text-sm md:text-base text-gray-200 overflow-x-auto leading-relaxed font-sans">
+                                  {sectionContent}
+                                </pre>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )
+                  })()}
                 </div>
               </div>
             </CardContent>
