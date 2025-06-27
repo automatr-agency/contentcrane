@@ -16,6 +16,7 @@ import {
   Instagram,
   Mail,
   Music,
+  Mic,
 } from "lucide-react"
 import Link from "next/link"
 import { Header } from "@/components/header"
@@ -31,14 +32,14 @@ export default function HomePage() {
         <div className="container mx-auto text-center max-w-4xl">
           <Badge className="mb-4 bg-purple-500/20 text-purple-300 border-purple-400/30 animate-fade-in backdrop-blur-sm">
             <Sparkles className="w-4 h-4 mr-1 animate-pulse" />
-            Powered by GPT-4o
+            Powered by Gemini AI
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent leading-tight animate-fade-in-up">
-            Turn One Text Into 6+ Formats
+            Turn One Text Into 7+ Formats
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
             Transform your articles, newsletters, and notes into Twitter threads, LinkedIn posts, YouTube scripts,
-            Instagram captions, email newsletters, TikTok scripts, and more. All powered by advanced AI.
+            Instagram captions, email newsletters, TikTok scripts, ElevenLabs TTS, and more. All powered by advanced AI.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up animation-delay-400">
             <Link href="/tool">
@@ -53,7 +54,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="glass-button text-white border-white/20 hover:border-white/40 px-8 py-3 text-lg w-full sm:w-auto hover:scale-105 transition-all duration-300 hover:shadow-lg"
+              className="glass-button text-white border-white/20 hover:border-white/40 px-8 py-3 text-lg w-full sm:w-auto hover:scale-105 transition-all duration-300 hover:shadow-lg bg-transparent"
             >
               See Examples
             </Button>
@@ -77,7 +78,7 @@ export default function HomePage() {
                 <ArrowRight className="w-6 md:w-8 h-6 md:h-8 text-purple-400 hidden lg:block animate-pulse" />
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                 {[
                   { icon: MessageSquare, label: "Twitter Thread", color: "from-blue-500 to-blue-600" },
                   { icon: Share2, label: "LinkedIn Post", color: "from-blue-600 to-indigo-600" },
@@ -85,6 +86,7 @@ export default function HomePage() {
                   { icon: Video, label: "YouTube Script", color: "from-red-500 to-red-600" },
                   { icon: Mail, label: "Email Newsletter", color: "from-green-500 to-emerald-600" },
                   { icon: Music, label: "TikTok Script", color: "from-cyan-400 to-cyan-600" },
+                  { icon: Mic, label: "ElevenLabs TTS", color: "from-purple-500 to-indigo-600" },
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -126,7 +128,8 @@ export default function HomePage() {
               {
                 step: "02",
                 title: "Choose Platform",
-                description: "Select from 6 platforms: Twitter, LinkedIn, YouTube, Instagram, Email, or TikTok.",
+                description:
+                  "Select from 7 platforms: Twitter, LinkedIn, YouTube, Instagram, Email, TikTok, or ElevenLabs TTS.",
                 icon: Target,
               },
               {
@@ -138,7 +141,7 @@ export default function HomePage() {
             ].map((step, index) => (
               <div
                 key={index}
-                className="text-center animate-fade-in-up group border-0 border-0 border-0 border-0 border-solid border-solid border-solid border-solid border border-0 border-[01px] border border-0 border-0 border border-0 border-slate-800 rounded-xl"
+                className="text-center animate-fade-in-up group"
                 style={{ animationDelay: `${200 + index * 200}ms` }}
               >
                 <div className="relative mb-6 md:mb-8">
@@ -180,9 +183,9 @@ export default function HomePage() {
               },
               {
                 icon: Target,
-                title: "6 Platform Support",
+                title: "7 Platform Support",
                 description:
-                  "Generate content for Twitter, LinkedIn, YouTube, Instagram, Email, and TikTok all in one place.",
+                  "Generate content for Twitter, LinkedIn, YouTube, Instagram, Email, TikTok, and ElevenLabs TTS all in one place.",
                 color: "from-blue-500 to-indigo-500",
               },
               {
@@ -248,7 +251,7 @@ export default function HomePage() {
               Ready to Transform Your Content?
             </h2>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join content creators who are already maximizing their reach with AI-powered repurposing across 6
+              Join content creators who are already maximizing their reach with AI-powered repurposing across 7
               platforms
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -264,7 +267,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="glass-button text-white border-white/20 hover:border-white/40 px-8 py-3 text-lg font-semibold w-full sm:w-auto hover:scale-105 transition-all duration-300"
+                className="glass-button text-white border-white/20 hover:border-white/40 px-8 py-3 text-lg font-semibold w-full sm:w-auto hover:scale-105 transition-all duration-300 bg-transparent"
               >
                 See Examples
               </Button>

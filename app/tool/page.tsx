@@ -20,13 +20,14 @@ import {
   Music,
   Settings,
   Tag,
+  Mic,
 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 
-type Platform = "twitter" | "linkedin" | "youtube" | "instagram" | "email" | "tiktok"
+type Platform = "twitter" | "linkedin" | "youtube" | "instagram" | "email" | "tiktok" | "elevenlabs"
 
 interface GeneratedContent {
   platform: Platform
@@ -121,9 +122,32 @@ const getSectionTitle = (sectionKey: string, platform: Platform) => {
       AUDIO_SUGGESTION: "🎵 Audio Suggestion",
       HASHTAGS: "🏷️ Hashtags",
     },
+    elevenlabs: {
+      OPENING: "🎙️ Opening",
+      MAIN_SCRIPT: "📜 Main Script",
+      KEY_POINTS: "💡 Key Points",
+      CONCLUSION: "🎯 Conclusion",
+      VOICE_NOTES: "🔊 Voice Notes",
+    },
   }
 
   return titles[platform]?.[sectionKey] || sectionKey
+}
+
+// Add this helper function before the component:
+const formatTextWithBold = (text: string) => {
+  const parts = text.split(/(\*\*.*?\*\*)/g)
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      const boldText = part.slice(2, -2)
+      return (
+        <strong key={index} className="font-bold text-white">
+          {boldText}
+        </strong>
+      )
+    }
+    return part
+  })
 }
 
 export default function ContentRepurposingTool() {
@@ -181,6 +205,13 @@ export default function ContentRepurposingTool() {
       icon: Music,
       description: "Short-form video script",
       color: "from-cyan-400 to-cyan-600",
+    },
+    {
+      id: "elevenlabs" as Platform,
+      name: "ElevenLabs TTS",
+      icon: Mic,
+      description: "Clean TTS voice script",
+      color: "from-purple-500 to-indigo-600",
     },
   ]
 
@@ -667,7 +698,7 @@ export default function ContentRepurposingTool() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {platforms.map((platform, index) => (
                 <Button
                   key={platform.id}
@@ -830,10 +861,22 @@ export default function ContentRepurposingTool() {
                                 <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-3 border border-yellow-400/20">
                                   <p className="text-sm md:text-base text-yellow-200">{sectionContent}</p>
                                 </div>
+                              ) : sectionKey === "VOICE_NOTES" ? (
+                                <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-lg p-3 border border-purple-400/20">
+                                  <p className="text-sm md:text-base text-purple-200">{sectionContent}</p>
+                                </div>
+                              ) : sectionKey === "MAIN_SCRIPT" ||
+                                (generatedContent.platform === "elevenlabs" &&
+                                  (sectionKey === "OPENING" || sectionKey === "CONCLUSION")) ? (
+                                <div className="bg-gradient-to-r from-slate-800/50 to-slate-700/50 rounded-lg p-4 border border-slate-600/30">
+                                  <div className="text-sm md:text-base text-gray-100 leading-relaxed font-mono whitespace-pre-wrap tracking-wide">
+                                    {formatTextWithBold(sectionContent)}
+                                  </div>
+                                </div>
                               ) : (
-                                <pre className="whitespace-pre-wrap text-sm md:text-base text-gray-200 overflow-x-auto leading-relaxed font-sans">
-                                  {sectionContent}
-                                </pre>
+                                <div className="text-sm md:text-base text-gray-200 overflow-x-auto leading-relaxed font-sans whitespace-pre-wrap">
+                                  {formatTextWithBold(sectionContent)}
+                                </div>
                               )}
                             </div>
                           </div>

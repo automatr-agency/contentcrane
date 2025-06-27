@@ -262,6 +262,42 @@ IMPORTANT: Format your response EXACTLY like this structure:
 
 === HASHTAGS ===
 [List of relevant hashtags separated by spaces]`,
+
+      elevenlabs: `Convert this text content into a clean TTS (Text-to-Speech) script optimized for ElevenLabs voice synthesis.
+
+${contextString}
+
+Text content: ${content}
+
+Requirements:
+- ${contentTone === "natural" ? "Natural, conversational" : contentTone} tone for ${targetAudience === "general" ? "listeners" : targetAudience}
+- ${contentLength === "optimal" ? "2-4" : contentLength === "short" ? "1-2" : contentLength === "medium" ? "2-4" : "4-6"} minutes when spoken
+- Clean, readable text without special formatting
+- Use natural punctuation for pacing: periods, commas, exclamation marks, question marks
+- Add strategic pauses with ellipses (...)
+- Remove all hashtags, mentions, and social media formatting
+- Focus on ${contentType === "general" ? "clear narration" : contentType} delivery
+- Include emotional cues through punctuation only
+- Target ${targetAudience === "general" ? "general listeners" : targetAudience}
+- Industry-appropriate language${industry !== "general" ? ` for ${industry}` : ""}
+- ${ctaType === "platform-default" ? "Clear conclusion" : ctaType} focused ending
+
+IMPORTANT: Format your response EXACTLY like this structure:
+
+=== OPENING ===
+[Clean opening hook with natural speech patterns]
+
+=== MAIN_SCRIPT ===
+[Main narration script with proper punctuation for TTS pacing]
+
+=== KEY_POINTS ===
+[Important points emphasized with natural speech flow]
+
+=== CONCLUSION ===
+[Strong conclusion with clear ending]
+
+=== VOICE_NOTES ===
+[Brief notes about recommended voice tone and pacing]`,
     }
 
     const prompt = prompts[platform as keyof typeof prompts]
