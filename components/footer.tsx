@@ -70,7 +70,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="#contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact: nathanaelkhiel@gmail.com
+                  Contact: automatragency@gmail.com
                 </Link>
               </li>
             </ul>
