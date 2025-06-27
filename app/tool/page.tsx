@@ -168,7 +168,7 @@ export default function ContentRepurposingTool() {
       id: "twitter" as Platform,
       name: "Twitter Thread",
       icon: Twitter,
-      description: "Convert to engaging Twitter thread",
+      description: "Engaging Twitter thread",
       color: "from-blue-400 to-blue-600",
     },
     {
@@ -189,7 +189,7 @@ export default function ContentRepurposingTool() {
       id: "instagram" as Platform,
       name: "Instagram Caption",
       icon: Instagram,
-      description: "Visual-focused Instagram content",
+      description: "Instagram content & captions",
       color: "from-pink-500 to-purple-600",
     },
     {
