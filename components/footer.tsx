@@ -21,22 +21,18 @@ export function Footer() {
             </p>
             <div className="flex justify-center md:justify-start space-x-3">
               <Link
-                href="https://twitter.com"
+                href="https://x.com/automatragency"
+                target="__blank"
                 className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
               >
                 <Twitter className="w-4 h-4" />
               </Link>
               <Link
-                href="https://linkedin.com"
+                href="https://linkedin.com/automatragency"
+                target="__blank"
                 className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
               >
                 <Linkedin className="w-4 h-4" />
-              </Link>
-              <Link
-                href="https://github.com"
-                className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
-              >
-                <Github className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -56,8 +52,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://forms.gle/kj14bp9rSys6RAmg9" target="_blank" className="text-gray-300 hover:text-white transition-colors">
-                  Send Feedback
+                <Link href="/tool" className="text-gray-300 hover:text-white transition-colors">
+                  Example
                 </Link>
               </li>
             </ul>
@@ -67,6 +63,11 @@ export function Footer() {
           <div className="text-center md:text-left">
             <h4 className="font-semibold mb-4 text-white">Support</h4>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="https://forms.gle/kj14bp9rSys6RAmg9" target="_blank" className="text-gray-300 hover:text-white transition-colors">
+                  Send Feedback
+                </Link>
+              </li>
               <li>
                 <Link href="#contact" className="text-gray-300 hover:text-white transition-colors">
                   Contact: nathanaelkhiel@gmail.com
