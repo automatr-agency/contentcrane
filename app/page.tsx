@@ -32,7 +32,7 @@ export default function HomePage() {
         <div className="container mx-auto text-center max-w-4xl">
           <Badge className="mb-4 bg-purple-500/20 text-purple-300 border-purple-400/30 animate-fade-in backdrop-blur-sm">
             <Sparkles className="w-4 h-4 mr-1 animate-pulse" />
-            Powered by Gemini AI
+            Powered by Advanced AI
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent leading-tight animate-fade-in-up">
             Turn One Text Into 7+ Formats
