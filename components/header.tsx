@@ -30,7 +30,7 @@ export function Header() {
             <Link href="/tool" className="text-gray-300 hover:text-white transition-colors">
               Tool
             </Link>
-            <Link href="#examples" className="text-gray-300 hover:text-white transition-colors">
+            <Link href="/tool" className="text-gray-300 hover:text-white transition-colors">
               Examples
             </Link>
           </nav>

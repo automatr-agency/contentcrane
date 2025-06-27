@@ -56,11 +56,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#examples" className="text-gray-300 hover:text-white transition-colors">
-                  Examples
-                </Link>
-              </li>
-              <li>
                 <Link href="#feedback" className="text-gray-300 hover:text-white transition-colors">
                   Send Feedback
                 </Link>
@@ -73,23 +68,8 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-white">Support</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#help" className="text-gray-300 hover:text-white transition-colors">
-                  Help Center
-                </Link>
-              </li>
-              <li>
                 <Link href="#contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="#privacy" className="text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#terms" className="text-gray-300 hover:text-white transition-colors">
-                  Terms of Service
+                  Contact: nathanaelkhiel@gmail.com
                 </Link>
               </li>
             </ul>
