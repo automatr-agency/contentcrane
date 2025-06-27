@@ -56,7 +56,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#feedback" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="https://forms.gle/kj14bp9rSys6RAmg9" target="_blank" className="text-gray-300 hover:text-white transition-colors">
                   Send Feedback
                 </Link>
               </li>

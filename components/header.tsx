@@ -37,13 +37,14 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-2 md:space-x-3">
-            <Button
-              variant="outline"
-              size="sm"
-              className="glass-button text-white border-white/20 hover:border-white/40 text-xs md:text-sm"
-            >
-              Feedback
-            </Button>
+          <Link
+            href="https://forms.gle/kj14bp9rSys6RAmg9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center glass-button text-white border border-white/20 hover:border-white/40 text-xs md:text-sm px-4 py-2 rounded"
+          >
+            Send Feedback
+          </Link>
             <Link href="/tool">
               <Button
                 size="sm"
