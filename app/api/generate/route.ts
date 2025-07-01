@@ -298,6 +298,45 @@ IMPORTANT: Format your response EXACTLY like this structure:
 
 === VOICE_NOTES ===
 [Brief notes about recommended voice tone and pacing]`,
+
+      'gmail-cold-outreach': `Convert this text content into a cold outreach email for Gmail with structured formatting.
+
+${contextString}
+
+Text content: ${content}
+
+Requirements:
+- Write a highly personalized cold outreach email for business or networking
+- Start with a compelling subject line
+- Use a professional, friendly tone for ${targetAudience === "general" ? "the recipient" : targetAudience}
+- Begin with a personalized greeting (use a placeholder if no name is provided)
+- Clearly state the purpose and value proposition in the first paragraph
+- Keep the email concise and actionable (${contentLength === "optimal" ? "100-200" : contentLength === "short" ? "80-120" : contentLength === "medium" ? "120-200" : "200-300"} words)
+- Include a clear, specific ${ctaType === "platform-default" ? "call-to-action" : ctaType}
+- End with a polite closing and signature
+- Avoid generic or spammy language
+- Format appropriate for ${contentType === "general" ? "cold outreach" : contentType}
+- If industry is specified, tailor the message for ${industry}
+
+IMPORTANT: Format your response EXACTLY like this structure:
+
+=== Subject Line ===
+[Compelling subject line]
+
+=== Greeting ===
+[Personalized greeting]
+
+=== Opening ===
+[Opening line that grabs attention]
+
+=== Value Proposition ===
+[Concise explanation of the value or offer]
+
+=== Call To Action ===
+[Clear, actionable CTA]
+
+=== Signature ===
+[Polite closing and sender signature]`,
     }
 
     const prompt = prompts[platform as keyof typeof prompts]

@@ -87,6 +87,7 @@ export default function HomePage() {
                   { icon: Mail, label: "Email Newsletter", color: "from-green-500 to-emerald-600" },
                   { icon: Music, label: "TikTok Script", color: "from-cyan-400 to-cyan-600" },
                   { icon: Mic, label: "ElevenLabs TTS", color: "from-purple-500 to-indigo-600" },
+                  { icon: Mail, label: "Gmail Cold Outreach", color: "from-yellow-400 to-red-500" },
                 ].map((item, index) => (
                   <div
                     key={index}

@@ -27,7 +27,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 
-type Platform = "twitter" | "linkedin" | "youtube" | "instagram" | "email" | "tiktok" | "elevenlabs"
+type Platform = "twitter" | "linkedin" | "youtube" | "instagram" | "email" | "tiktok" | "elevenlabs" | "gmail-cold-outreach"
 
 interface GeneratedContent {
   platform: Platform
@@ -213,6 +213,13 @@ export default function ContentRepurposingTool() {
       icon: Mic,
       description: "Clean TTS voice script",
       color: "from-purple-500 to-indigo-600",
+    },
+    {
+      id: "gmail-cold-outreach" as Platform,
+      name: "Gmail Cold Outreach",
+      icon: Mail,
+      description: "Personalized cold outreach email",
+      color: "from-yellow-400 to-red-500",
     },
   ]
 
