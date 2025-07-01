@@ -155,6 +155,7 @@ export default function ContentRepurposingTool() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedContent, setGeneratedContent] = useState<GeneratedContent | null>(null)
   const [copied, setCopied] = useState(false)
+  const [plainCopied, setPlainCopied] = useState(false)
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false)
   const [contentType, setContentType] = useState("")
   const [targetAudience, setTargetAudience] = useState("")
@@ -349,6 +350,46 @@ export default function ContentRepurposingTool() {
         description: "Content copied to clipboard",
       })
       setTimeout(() => setCopied(false), 2000)
+    } catch (error) {
+      toast({
+        title: "Copy failed",
+        description: "Please copy manually",
+        variant: "destructive",
+      })
+    }
+  }
+
+  // New: Copy all section contents as plain text (no titles)
+  const copyAllPlainText = async (content: string) => {
+    try {
+      const sections = parseStructuredContent(content)
+      let plainText = ""
+      if (Object.keys(sections).length > 0) {
+        plainText = Object.entries(sections)
+          .map(([sectionKey, sectionContent]) => {
+            if (sectionKey === "HASHTAGS") {
+              // Ensure each tag starts with #
+              return sectionContent
+                .split(/\s+/)
+                .filter((tag) => tag.trim())
+                .map((tag) => tag.startsWith("#") ? tag : `#${tag}`)
+                .join(" ")
+            }
+            return sectionContent
+          })
+          .join("\n\n").trim()
+      } else {
+        plainText = content
+      }
+      // Remove all ** markers for bold
+      plainText = plainText.replace(/\*\*(.*?)\*\*/g, "$1")
+      await navigator.clipboard.writeText(plainText)
+      setPlainCopied(true)
+      toast({
+        title: "Copied!",
+        description: "Plain text copied to clipboard",
+      })
+      setTimeout(() => setPlainCopied(false), 2000)
     } catch (error) {
       toast({
         title: "Copy failed",
@@ -766,19 +807,35 @@ export default function ContentRepurposingTool() {
                     >
                       Ready to Copy
                     </Badge>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => copyToClipboard(generatedContent.content)}
-                      className="flex items-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md"
-                    >
-                      {copied ? (
-                        <CheckCircle className="w-3 md:w-4 h-3 md:h-4 text-green-400 animate-bounce" />
-                      ) : (
-                        <Copy className="w-3 md:w-4 h-3 md:h-4 group-hover:animate-pulse" />
-                      )}
-                      <span>{copied ? "Copied!" : "Copy All"}</span>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => copyToClipboard(generatedContent.content)}
+                        className="flex items-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md"
+                      >
+                        {copied ? (
+                          <CheckCircle className="w-3 md:w-4 h-3 md:h-4 text-green-400 animate-bounce" />
+                        ) : (
+                          <Copy className="w-3 md:w-4 h-3 md:h-4 group-hover:animate-pulse" />
+                        )}
+                        <span>{copied ? "Copied!" : "Copy All"}</span>
+                      </Button>
+                      {/* New: Copy All in Plain Text Button */}
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => copyAllPlainText(generatedContent.content)}
+                        className="flex items-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md"
+                      >
+                        {plainCopied ? (
+                          <CheckCircle className="w-3 md:w-4 h-3 md:h-4 text-green-400 animate-bounce" />
+                        ) : (
+                          <Copy className="w-3 md:w-4 h-3 md:h-4 group-hover:animate-pulse" />
+                        )}
+                        <span>{plainCopied ? "Copied!" : "Copy All (Plain Text)"}</span>
+                      </Button>
+                    </div>
                   </div>
 
                   {(() => {
