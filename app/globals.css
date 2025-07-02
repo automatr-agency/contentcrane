@@ -275,3 +275,47 @@ body {
 ::selection {
   @apply bg-purple-500/30 text-white;
 }
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  .glass-button {
+    @apply min-h-[44px] px-4 py-2;
+  }
+  
+  /* Better textarea sizing */
+  .glass-input[rows] {
+    @apply min-h-[120px];
+  }
+  
+  /* Ensure readable text on small screens */
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+  
+  /* Improve card spacing */
+  .glass-card {
+    @apply mx-1;
+  }
+  
+  /* Better badge sizing */
+  .badge {
+    @apply text-xs px-2 py-1;
+  }
+}
+
+/* Improve touch feedback */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+  
+  .glass-button:active {
+    @apply bg-white/25 scale-95;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+}

@@ -430,7 +430,7 @@ export default function ContentRepurposingTool() {
     <div className="min-h-screen">
       <Header />
 
-      <div className="container mx-auto px-4 py-6 md:py-8 max-w-5xl">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8 max-w-5xl">
         {/* Back to Home */}
         <div className="mb-6 animate-fade-in">
           <Link href="/">
@@ -518,14 +518,14 @@ export default function ContentRepurposingTool() {
           </CardHeader>
           {showAdvancedOptions && (
             <CardContent className="animate-fade-in-up">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {/* Content Type */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Content Type</label>
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-gray-300 block">Content Type</label>
                   <select
                     value={contentType}
                     onChange={(e) => setContentType(e.target.value)}
-                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full p-3 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 min-h-[44px]"
                   >
                     {contentTypes.map((type) => (
                       <option key={type.value} value={type.value} className="bg-slate-800 text-white">
@@ -536,12 +536,12 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Target Audience */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Target Audience</label>
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-gray-300 block">Target Audience</label>
                   <select
                     value={targetAudience}
                     onChange={(e) => setTargetAudience(e.target.value)}
-                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full p-3 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 min-h-[44px]"
                   >
                     {audiences.map((audience) => (
                       <option key={audience.value} value={audience.value} className="bg-slate-800 text-white">
@@ -552,12 +552,12 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Content Tone */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Content Tone</label>
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-gray-300 block">Content Tone</label>
                   <select
                     value={contentTone}
                     onChange={(e) => setContentTone(e.target.value)}
-                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full p-3 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 min-h-[44px]"
                   >
                     {tones.map((tone) => (
                       <option key={tone.value} value={tone.value} className="bg-slate-800 text-white">
@@ -568,12 +568,12 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Content Length */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Content Length</label>
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-gray-300 block">Content Length</label>
                   <select
                     value={contentLength}
                     onChange={(e) => setContentLength(e.target.value)}
-                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full p-3 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 min-h-[44px]"
                   >
                     {lengths.map((length) => (
                       <option key={length.value} value={length.value} className="bg-slate-800 text-white">
@@ -584,12 +584,12 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Industry */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Industry/Niche</label>
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-gray-300 block">Industry/Niche</label>
                   <select
                     value={industry}
                     onChange={(e) => setIndustry(e.target.value)}
-                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full p-3 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 min-h-[44px]"
                   >
                     {industries.map((ind) => (
                       <option key={ind.value} value={ind.value} className="bg-slate-800 text-white">
@@ -600,12 +600,12 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* CTA Type */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Call-to-Action</label>
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-gray-300 block">Call-to-Action</label>
                   <select
                     value={ctaType}
                     onChange={(e) => setCtaType(e.target.value)}
-                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full p-3 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 min-h-[44px]"
                   >
                     {ctaTypes.map((cta) => (
                       <option key={cta.value} value={cta.value} className="bg-slate-800 text-white">
@@ -640,7 +640,7 @@ export default function ContentRepurposingTool() {
               {/* Quick Presets */}
               <div className="mt-6 pt-4 border-t border-white/10">
                 <label className="text-sm font-medium text-gray-300 mb-3 block">Quick Presets</label>
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
                   <Button
                     variant="outline"
                     size="sm"
@@ -652,7 +652,7 @@ export default function ContentRepurposingTool() {
                       setIndustry("technology")
                       setCtaType("engagement")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-xs px-2 py-2 h-auto min-h-[40px] justify-center"
                   >
                     Tech Professional
                   </Button>
@@ -667,7 +667,7 @@ export default function ContentRepurposingTool() {
                       setIndustry("")
                       setCtaType("engagement")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-xs px-2 py-2 h-auto min-h-[40px] justify-center"
                   >
                     Casual Social
                   </Button>
@@ -682,7 +682,7 @@ export default function ContentRepurposingTool() {
                       setIndustry("marketing")
                       setCtaType("newsletter-signup")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-xs px-2 py-2 h-auto min-h-[40px] justify-center"
                   >
                     Business Newsletter
                   </Button>
@@ -697,7 +697,7 @@ export default function ContentRepurposingTool() {
                       setIndustry("")
                       setCtaType("follow")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-xs px-2 py-2 h-auto min-h-[40px] justify-center"
                   >
                     Educational Content
                   </Button>
@@ -712,7 +712,7 @@ export default function ContentRepurposingTool() {
                       setIndustry("")
                       setCtaType("engagement")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-xs px-2 py-2 h-auto min-h-[40px] justify-center"
                   >
                     Viral Content
                   </Button>
@@ -727,7 +727,7 @@ export default function ContentRepurposingTool() {
                       setIndustry("")
                       setCtaType("")
                     }}
-                    className="glass-button text-gray-400 border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button text-gray-400 border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-xs px-2 py-2 h-auto min-h-[40px] justify-center"
                   >
                     Clear All
                   </Button>
@@ -746,23 +746,23 @@ export default function ContentRepurposingTool() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
               {platforms.map((platform, index) => (
                 <Button
                   key={platform.id}
                   onClick={() => generateContent(platform.id)}
                   disabled={isGenerating || !blogContent.trim()}
-                  className={`h-auto p-4 md:p-6 flex flex-col items-center space-y-3 bg-gradient-to-br ${platform.color} text-white hover:opacity-90 disabled:opacity-50 disabled:grayscale disabled:saturate-50 disabled:cursor-not-allowed hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/25 animate-fade-in-up group backdrop-blur-sm border border-white/10`}
+                  className={`h-auto p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center space-y-2 md:space-y-3 bg-gradient-to-br ${platform.color} text-white hover:opacity-90 disabled:opacity-50 disabled:grayscale disabled:saturate-50 disabled:cursor-not-allowed hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/25 animate-fade-in-up group backdrop-blur-sm border border-white/10 min-h-[100px] sm:min-h-[120px] md:min-h-[140px]`}
                   style={{ animationDelay: `${800 + index * 150}ms` }}
                 >
                   {isGenerating ? (
-                    <Loader2 className="w-6 md:w-8 h-6 md:h-8 animate-spin" />
+                    <Loader2 className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 animate-spin" />
                   ) : (
-                    <platform.icon className="w-6 md:w-8 h-6 md:h-8 group-hover:animate-bounce" />
+                    <platform.icon className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 group-hover:animate-bounce flex-shrink-0" />
                   )}
-                  <div className="text-center">
-                    <div className="font-semibold text-sm md:text-base">{platform.name}</div>
-                    <div className="text-xs md:text-sm opacity-90">{platform.description}</div>
+                  <div className="text-center flex-1 flex flex-col justify-center">
+                    <div className="font-semibold text-xs sm:text-sm md:text-base leading-tight">{platform.name}</div>
+                    <div className="text-[10px] sm:text-xs md:text-sm opacity-90 leading-tight mt-1 hidden sm:block">{platform.description}</div>
                   </div>
                 </Button>
               ))}
@@ -807,40 +807,40 @@ export default function ContentRepurposingTool() {
 
                 {/* Content Output */}
                 <div className="relative animate-fade-in-up group" style={{ animationDelay: "400ms" }}>
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4">
                     <Badge
                       variant="outline"
                       className="text-xs md:text-sm animate-pulse-gentle bg-green-500/20 text-green-300 border-green-400/30"
                     >
                       Ready to Copy
                     </Badge>
-                    <div className="flex gap-2">
+                    <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => copyToClipboard(generatedContent.content)}
-                        className="flex items-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md"
+                        className="flex items-center justify-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md w-full sm:w-auto min-h-[40px]"
                       >
                         {copied ? (
                           <CheckCircle className="w-3 md:w-4 h-3 md:h-4 text-green-400 animate-bounce" />
                         ) : (
                           <Copy className="w-3 md:w-4 h-3 md:h-4 group-hover:animate-pulse" />
                         )}
-                        <span>{copied ? "Copied!" : "Copy All"}</span>
+                        <span className="whitespace-nowrap">{copied ? "Copied!" : "Copy All"}</span>
                       </Button>
                       {/* New: Copy All in Plain Text Button */}
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => copyAllPlainText(generatedContent.content)}
-                        className="flex items-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md"
+                        className="flex items-center justify-center space-x-1 text-xs md:text-sm glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 group-hover:shadow-md w-full sm:w-auto min-h-[40px]"
                       >
                         {plainCopied ? (
                           <CheckCircle className="w-3 md:w-4 h-3 md:h-4 text-green-400 animate-bounce" />
                         ) : (
                           <Copy className="w-3 md:w-4 h-3 md:h-4 group-hover:animate-pulse" />
                         )}
-                        <span>{plainCopied ? "Copied!" : "Copy All (Plain Text)"}</span>
+                        <span className="whitespace-nowrap">{plainCopied ? "Copied!" : "Copy Plain Text"}</span>
                       </Button>
                     </div>
                   </div>
@@ -852,7 +852,7 @@ export default function ContentRepurposingTool() {
                     if (!hasStructuredContent) {
                       // Fallback to original format if parsing fails
                       return (
-                        <div className="glass rounded-lg p-4 md:p-6 border border-white/10 group-hover:bg-white/10 transition-colors duration-300 group-hover:shadow-inner">
+                        <div className="glass rounded-lg p-3 sm:p-4 md:p-6 border border-white/10 group-hover:bg-white/10 transition-colors duration-300 group-hover:shadow-inner">
                           <pre className="whitespace-pre-wrap text-sm md:text-base font-mono text-gray-200 overflow-x-auto leading-relaxed">
                             {generatedContent.content}
                           </pre>
@@ -868,25 +868,25 @@ export default function ContentRepurposingTool() {
                             className="glass rounded-lg border border-white/10 overflow-hidden hover:bg-white/5 transition-all duration-300"
                           >
                             {/* Section Header */}
-                            <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 px-4 py-3 border-b border-white/10 flex items-center justify-between">
-                              <h4 className="font-semibold text-white text-sm md:text-base flex items-center gap-2">
+                            <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 px-3 sm:px-4 py-3 border-b border-white/10 flex items-center justify-between">
+                              <h4 className="font-semibold text-white text-sm md:text-base flex items-center gap-2 flex-1">
                                 {getSectionTitle(sectionKey, generatedContent.platform)}
                               </h4>
                               <Button
                                 size="sm"
                                 variant="ghost"
                                 onClick={() => copyToClipboard(sectionContent)}
-                                className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
+                                className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 min-h-[36px] px-2 sm:px-3 ml-2 flex-shrink-0"
                               >
                                 <Copy className="w-3 h-3 mr-1" />
-                                Copy
+                                <span className="hidden sm:inline">Copy</span>
                               </Button>
                             </div>
 
                             {/* Section Content */}
-                            <div className="p-4 md:p-6">
+                            <div className="p-3 sm:p-4 md:p-6">
                               {sectionKey === "HASHTAGS" ? (
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                   {sectionContent
                                     .split(" ")
                                     .filter((tag) => tag.trim())
@@ -894,7 +894,7 @@ export default function ContentRepurposingTool() {
                                       <Badge
                                         key={tagIndex}
                                         variant="outline"
-                                        className="text-xs bg-blue-500/20 border-blue-400/30 text-blue-300 hover:bg-blue-500/30 transition-colors cursor-pointer"
+                                        className="text-xs bg-blue-500/20 border-blue-400/30 text-blue-300 hover:bg-blue-500/30 transition-colors cursor-pointer px-2 py-1 leading-none"
                                         onClick={() => copyToClipboard(hashtag)}
                                       >
                                         {hashtag.startsWith("#") ? hashtag : `#${hashtag}`}
@@ -904,12 +904,12 @@ export default function ContentRepurposingTool() {
                               ) : sectionKey === "KEY_INSIGHTS" ||
                                 sectionKey === "KEY_POINTS" ||
                                 sectionKey === "KEY_TAKEAWAYS" ? (
-                                <div className="space-y-2">
+                                <div className="space-y-3">
                                   {sectionContent
                                     .split("\n")
                                     .filter((line) => line.trim())
                                     .map((point, pointIndex) => (
-                                      <div key={pointIndex} className="flex items-start gap-2">
+                                      <div key={pointIndex} className="flex items-start gap-3">
                                         <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
                                         <p className="text-sm md:text-base text-gray-200 leading-relaxed">
                                           {point.replace(/^[-•*]\s*/, "")}
