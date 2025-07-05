@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description: 'Paste your content and instantly repurpose it for Twitter, LinkedIn, YouTube, Instagram, Email, TikTok, and more. Powered by advanced AI (GPT-4o). Try for free!',
 
   icons: {
-    icon: '/placeholder.svg',
-    shortcut: '/placeholder.svg',
-    apple: '/placeholder.svg',
+    icon: '/app-logo.png',
+    shortcut: '/app-logo.png',
+    apple: '/app-logo.png',
   },
 
   openGraph: {

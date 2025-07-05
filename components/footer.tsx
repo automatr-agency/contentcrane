@@ -21,14 +21,14 @@ export function Footer() {
             </p>
             <div className="flex justify-center md:justify-start space-x-3">
               <Link
-                href="https://x.com/automatragency"
+                href="https://x.com/"
                 target="__blank"
                 className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
               >
                 <Twitter className="w-4 h-4" />
               </Link>
               <Link
-                href="https://linkedin.com/automatragency"
+                href="https://linkedin.com/"
                 target="__blank"
                 className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
               >
@@ -66,11 +66,6 @@ export function Footer() {
               <li>
                 <Link href="https://forms.gle/kj14bp9rSys6RAmg9" target="_blank" className="text-gray-300 hover:text-white transition-colors">
                   Send Feedback
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact: automatragency@gmail.com
                 </Link>
               </li>
             </ul>
