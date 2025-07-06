@@ -32,13 +32,13 @@ export default function HomePage() {
         <div className="container mx-auto text-center max-w-4xl">
           <Badge className="mb-4 bg-purple-500/20 text-purple-300 border-purple-400/30 animate-fade-in backdrop-blur-sm">
             <Sparkles className="w-4 h-4 mr-1 animate-pulse" />
-            Powered by Advanced AI
+            Powered by Advanced AI (GPT-4o)
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent leading-tight animate-fade-in-up">
             Turn One Text Into 7+ Formats
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-            Transform your articles, newsletters, and notes into Twitter threads, LinkedIn posts, YouTube scripts,
+            Transform your text into Twitter threads, LinkedIn posts, YouTube scripts,
             Instagram captions, email newsletters, TikTok scripts, ElevenLabs TTS, and more. All powered by advanced AI.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up animation-delay-400">
@@ -169,7 +169,7 @@ export default function HomePage() {
           <div className="text-center mb-12 md:mb-16 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Why ContentCrane?</h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-              Save hours of manual work with AI-powered content repurposing
+              Save hours of manual work with AI-powered content writing
             </p>
           </div>
 
@@ -179,7 +179,7 @@ export default function HomePage() {
                 icon: Clock,
                 title: "Save 90% Time",
                 description:
-                  "What used to take hours now takes minutes. Focus on creating while AI handles the repurposing.",
+                  "What used to take hours now takes minutes. Focus on creating while AI handles the content writing.",
                 color: "from-green-500 to-emerald-500",
               },
               {
@@ -193,7 +193,7 @@ export default function HomePage() {
                 icon: Sparkles,
                 title: "Smart AI Analysis",
                 description:
-                  "Gemini AI understands context and tone to create coherent, high-quality repurposed content.",
+                  "GPT-4o understands context and tone to create coherent, high-quality content.",
                 color: "from-purple-500 to-pink-500",
               },
               {
