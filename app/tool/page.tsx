@@ -218,7 +218,7 @@ export default function ContentRepurposingTool() {
       id: "gmail-cold-outreach" as Platform,
       name: "Gmail Cold Outreach",
       icon: Mail,
-      description: "Personalized cold outreach email",
+      description: "Personalized email",
       color: "from-yellow-400 to-red-500",
     },
   ]
