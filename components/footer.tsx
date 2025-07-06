@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Twitter, Linkedin, Github, Origami } from "lucide-react"
+import { Instagram, Twitter, Origami } from "lucide-react"
 
 export function Footer() {
   return (
@@ -21,18 +21,18 @@ export function Footer() {
             </p>
             <div className="flex justify-center md:justify-start space-x-3">
               <Link
-                href="https://x.com/"
+                href="http://instagram.com/contentcrane"
+                target="__blank"
+                className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
+              >
+                <Instagram className="w-4 h-4" />
+              </Link>
+              <Link
+                href="https://x.com/nkhielx"
                 target="__blank"
                 className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
               >
                 <Twitter className="w-4 h-4" />
-              </Link>
-              <Link
-                href="https://linkedin.com/"
-                target="__blank"
-                className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
-              >
-                <Linkedin className="w-4 h-4" />
               </Link>
             </div>
           </div>

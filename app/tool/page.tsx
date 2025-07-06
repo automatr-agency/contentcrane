@@ -27,7 +27,15 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 
-type Platform = "twitter" | "linkedin" | "youtube" | "instagram" | "email" | "tiktok" | "elevenlabs" | "gmail-cold-outreach"
+type Platform =
+  | "twitter"
+  | "linkedin"
+  | "youtube"
+  | "instagram"
+  | "email"
+  | "tiktok"
+  | "elevenlabs"
+  | "gmail-cold-outreach"
 
 interface GeneratedContent {
   platform: Platform
@@ -163,6 +171,7 @@ export default function ContentRepurposingTool() {
   const [contentLength, setContentLength] = useState("")
   const [industry, setIndustry] = useState("")
   const [ctaType, setCtaType] = useState("")
+  const [emojiLevel, setEmojiLevel] = useState("")
 
   const platforms = [
     {
@@ -290,6 +299,13 @@ export default function ContentRepurposingTool() {
     { value: "follow", label: "Follow/Subscribe" },
   ]
 
+  const emojiLevels = [
+    { value: "", label: "Platform default" },
+    { value: "low", label: "Low (Minimal emojis)" },
+    { value: "medium", label: "Medium (Balanced emojis)" },
+    { value: "high", label: "High (Emoji-rich)" },
+  ]
+
   const generateContent = async (platform: Platform) => {
     if (!blogContent.trim()) {
       toast({
@@ -318,6 +334,7 @@ export default function ContentRepurposingTool() {
           contentLength: contentLength || "optimal",
           industry: industry || "general",
           ctaType: ctaType || "platform-default",
+          emojiLevel: emojiLevel || "platform-default",
         }),
       })
 
@@ -379,12 +396,13 @@ export default function ContentRepurposingTool() {
               return sectionContent
                 .split(/\s+/)
                 .filter((tag) => tag.trim())
-                .map((tag) => tag.startsWith("#") ? tag : `#${tag}`)
+                .map((tag) => (tag.startsWith("#") ? tag : `#${tag}`))
                 .join(" ")
             }
             return sectionContent
           })
-          .join("\n\n").trim()
+          .join("\n\n")
+          .trim()
       } else {
         plainText = content
       }
@@ -423,6 +441,7 @@ export default function ContentRepurposingTool() {
     if (contentLength) options.push({ label: "Length", value: getOptionLabel(contentLength, lengths) })
     if (industry) options.push({ label: "Industry", value: getOptionLabel(industry, industries) })
     if (ctaType) options.push({ label: "CTA", value: getOptionLabel(ctaType, ctaTypes) })
+    if (emojiLevel) options.push({ label: "Emojis", value: getOptionLabel(emojiLevel, emojiLevels) })
     return options
   }
 
@@ -614,6 +633,22 @@ export default function ContentRepurposingTool() {
                     ))}
                   </select>
                 </div>
+
+                {/* Emoji Level */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">Emoji Usage</label>
+                  <select
+                    value={emojiLevel}
+                    onChange={(e) => setEmojiLevel(e.target.value)}
+                    className="w-full p-2 glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                  >
+                    {emojiLevels.map((level) => (
+                      <option key={level.value} value={level.value} className="bg-slate-800 text-white">
+                        {level.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               {/* Active Options Display */}
@@ -651,6 +686,7 @@ export default function ContentRepurposingTool() {
                       setContentLength("medium")
                       setIndustry("technology")
                       setCtaType("engagement")
+                      setEmojiLevel("low")
                     }}
                     className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
@@ -666,6 +702,7 @@ export default function ContentRepurposingTool() {
                       setContentLength("short")
                       setIndustry("")
                       setCtaType("engagement")
+                      setEmojiLevel("high")
                     }}
                     className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
@@ -681,6 +718,7 @@ export default function ContentRepurposingTool() {
                       setContentLength("medium")
                       setIndustry("marketing")
                       setCtaType("newsletter-signup")
+                      setEmojiLevel("medium")
                     }}
                     className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
@@ -696,6 +734,7 @@ export default function ContentRepurposingTool() {
                       setContentLength("long")
                       setIndustry("")
                       setCtaType("follow")
+                      setEmojiLevel("low")
                     }}
                     className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
@@ -711,6 +750,7 @@ export default function ContentRepurposingTool() {
                       setContentLength("short")
                       setIndustry("")
                       setCtaType("engagement")
+                      setEmojiLevel("high")
                     }}
                     className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
@@ -726,12 +766,13 @@ export default function ContentRepurposingTool() {
                       setContentLength("")
                       setIndustry("")
                       setCtaType("")
+                      setEmojiLevel("")
                     }}
-                    className="glass-button text-gray-400 border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="glass-button border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-gray-400"
                   >
                     Clear All
-                  </Button>
-                </div>
+                  </Button>            
+                  </div>
               </div>
             </CardContent>
           )}

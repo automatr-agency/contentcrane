@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
       contentLength = "optimal",
       industry = "general",
       ctaType = "platform-default",
+      emojiLevel = "platform-default",
     } = await request.json()
 
     if (!content || !platform) {
@@ -34,7 +35,8 @@ Tone: ${contentTone}
 Length: ${contentLength}
 Industry: ${industry}
 CTA Focus: ${ctaType}
-    `.trim()
+Emoji Usage: ${emojiLevel}
+`.trim()
 
     const prompts = {
       twitter: `Convert this text content into a Twitter thread with structured formatting.
@@ -47,7 +49,7 @@ Requirements:
 - Start with a compelling hook that resonates with ${targetAudience === "general" ? "a broad audience" : targetAudience}
 - Use a ${contentTone === "natural" ? "natural, engaging" : contentTone} tone throughout
 - Break into ${contentLength === "optimal" ? "5-8" : contentLength === "short" ? "3-5" : contentLength === "medium" ? "5-8" : "8-12"} tweets maximum
-- Use emojis strategically${industry !== "general" ? ` for ${industry} industry` : ""}
+- Use emojis ${emojiLevel === "platform-default" ? "strategically" : emojiLevel === "low" ? "sparingly (1-2 per tweet)" : emojiLevel === "medium" ? "moderately (2-4 per tweet)" : "abundantly (4-6 per tweet)"}${industry !== "general" ? ` for ${industry} industry` : ""}
 - Number tweets (1/6, 2/6, etc.)
 - Keep each tweet under 280 characters
 - End with ${ctaType === "platform-default" ? "engagement-focused" : ctaType} call-to-action
@@ -81,6 +83,7 @@ Text content: ${content}
 Requirements:
 - ${contentTone === "natural" ? "Professional yet engaging" : contentTone} tone with engaging hook for ${targetAudience === "general" ? "professionals" : targetAudience}
 - ${contentLength === "optimal" ? "1200-1500" : contentLength === "short" ? "800-1000" : contentLength === "medium" ? "1200-1500" : "1500-2000"} characters total
+- ${emojiLevel === "platform-default" ? "Use emojis professionally" : emojiLevel === "low" ? "Use minimal emojis (1-2 total)" : emojiLevel === "medium" ? "Use moderate emojis (3-5 total)" : "Use rich emojis throughout (6-10 total)"}
 - Include 3-5 relevant hashtags${industry !== "general" ? ` for ${industry} industry` : ""}
 - Clear ${ctaType === "platform-default" ? "professional engagement" : ctaType} focused call to action
 - Use line breaks for readability
@@ -157,7 +160,7 @@ Requirements:
 - Include 5-10 relevant hashtags${industry !== "general" ? ` for ${industry} industry` : ""}
 - Strong opening line to grab attention
 - ${ctaType === "platform-default" ? "engagement and interaction" : ctaType} focused call-to-action
-- Use emojis strategically to break up text
+- Use emojis ${emojiLevel === "platform-default" ? "strategically to break up text" : emojiLevel === "low" ? "minimally (2-4 total)" : emojiLevel === "medium" ? "moderately (5-8 total)" : "abundantly throughout (10-15 total)"}
 - Consider visual storytelling elements
 - Format appropriate for ${contentType === "general" ? "visual content" : contentType}
 - Make sure all hashtags are lowercase
@@ -174,10 +177,7 @@ IMPORTANT: Format your response EXACTLY like this structure:
 [Engagement question or call-to-action]
 
 === HASHTAGS ===
-[List of relevant hashtags separated by spaces]
-
-=== VISUAL_SUGGESTION ===
-[Brief suggestion for what type of image/video would work best]`,
+[List of relevant hashtags separated by spaces]`,
 
       email: `Convert this text content into an email newsletter with structured formatting.
 
@@ -232,12 +232,10 @@ Requirements:
 - Hook within first 3 seconds for ${targetAudience === "general" ? "TikTok users" : targetAudience}
 - ${contentTone === "natural" ? "Energetic and authentic" : contentTone} tone throughout
 - ${contentLength === "optimal" ? "30-60" : contentLength === "short" ? "15-30" : contentLength === "medium" ? "30-60" : "60-90"} second script
-- Visual cues and scene descriptions
-- Trending audio/music suggestions
 - ${ctaType === "platform-default" ? "follow and engagement" : ctaType} focused call-to-action
-- Include text overlay suggestions
 - Format appropriate for ${contentType === "general" ? "short-form video" : contentType}
 - Industry-relevant trends${industry !== "general" ? ` for ${industry}` : ""}
+- ${emojiLevel === "platform-default" ? "Use emojis for engagement" : emojiLevel === "low" ? "Use minimal emojis (1-2 total)" : emojiLevel === "medium" ? "Use moderate emojis (3-5 total)" : "Use rich emojis throughout (6-10 total)"}
 - Engagement prompts throughout
 
 IMPORTANT: Format your response EXACTLY like this structure:
@@ -246,19 +244,10 @@ IMPORTANT: Format your response EXACTLY like this structure:
 [0-3 seconds] [Your attention-grabbing opening]
 
 === MAIN_CONTENT ===
-[3-X seconds] [Main content with visual cues and timing]
-
-=== VISUAL_CUES ===
-[Specific visual directions and scene descriptions]
-
-=== TEXT_OVERLAYS ===
-[Suggested text overlays for key moments]
+[3-X seconds] [Main content with timing]
 
 === CALL_TO_ACTION ===
 [Final call-to-action]
-
-=== AUDIO_SUGGESTION ===
-[Trending audio or music suggestion]
 
 === HASHTAGS ===
 [List of relevant hashtags separated by spaces]`,
@@ -294,12 +283,9 @@ IMPORTANT: Format your response EXACTLY like this structure:
 [Important points emphasized with natural speech flow]
 
 === CONCLUSION ===
-[Strong conclusion with clear ending]
+[Strong conclusion with clear ending]`,
 
-=== VOICE_NOTES ===
-[Brief notes about recommended voice tone and pacing]`,
-
-      'gmail-cold-outreach': `Convert this text content into a cold outreach email for Gmail with structured formatting.
+      "gmail-cold-outreach": `Convert this text content into a cold outreach email for Gmail with structured formatting.
 
 ${contextString}
 
@@ -355,6 +341,7 @@ IMPORTANT: Format your response EXACTLY like this structure:
         contentLength,
         industry,
         ctaType,
+        emojiLevel,
       },
     })
   } catch (error) {
