@@ -481,7 +481,7 @@ export default function ContentRepurposingTool() {
             />
             <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <div className="text-sm text-gray-400 animate-fade-in">{blogContent.length} characters</div>
-              <Button
+              {/* <Button
                 variant="outline"
                 size="sm"
                 onClick={() =>
@@ -492,7 +492,7 @@ export default function ContentRepurposingTool() {
                 className="w-full sm:w-auto glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 animate-bounce-gentle"
               >
                 Try Sample Text
-              </Button>
+              </Button> */}
             </div>
           </CardContent>
         </Card>
@@ -500,46 +500,46 @@ export default function ContentRepurposingTool() {
         {/* Advanced Options */}
         <Card className="mb-6 md:mb-8 animate-fade-in-up animation-delay-400 glass-card hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300">
           <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle className="text-xl md:text-2xl flex items-center gap-2 text-white">
-                  <Settings className="w-5 h-5 text-purple-400" />
-                  Advanced Options
-                  {getActiveOptions().length > 0 && (
-                    <Badge variant="secondary" className="ml-2 bg-purple-500/20 text-purple-300 border-purple-400/30">
-                      {getActiveOptions().length} active
-                    </Badge>
-                  )}
-                </CardTitle>
-                <CardDescription className="text-sm md:text-base text-gray-300">
-                  Customize your content generation for better results (optional)
-                </CardDescription>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
-                className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
-              >
-                {showAdvancedOptions ? (
-                  <>
-                    <ChevronUp className="w-4 h-4 mr-2" />
-                    Hide Options
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="w-4 h-4 mr-2" />
-                    Show Options
-                  </>
+            <div>
+              <CardTitle className="text-xl md:text-2xl flex items-center gap-2 text-white">
+                <Settings className="w-5 h-5 text-purple-400" />
+                Advanced Options
+                {getActiveOptions().length > 0 && (
+                  <Badge variant="secondary" className="ml-2 bg-purple-500/20 text-purple-300 border-purple-400/30">
+                    {getActiveOptions().length} active
+                  </Badge>
                 )}
-              </Button>
+              </CardTitle>
+              <CardDescription className="text-sm md:text-base text-gray-300">
+                Customize your content generation for better results (optional)
+              </CardDescription>
+              <div className="mt-4 flex justify-center md:justify-start">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
+                  className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                >
+                  {showAdvancedOptions ? (
+                    <>
+                      <ChevronUp className="w-4 h-4 mr-2" />
+                      Hide Options
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="w-4 h-4 mr-2" />
+                      Show Options
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           </CardHeader>
           {showAdvancedOptions && (
             <CardContent className="animate-fade-in-up">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {/* Content Type */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Content Type</label>
                   <select
                     value={contentType}
@@ -555,7 +555,7 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Target Audience */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Target Audience</label>
                   <select
                     value={targetAudience}
@@ -571,7 +571,7 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Content Tone */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Content Tone</label>
                   <select
                     value={contentTone}
@@ -587,7 +587,7 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Content Length */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Content Length</label>
                   <select
                     value={contentLength}
@@ -603,7 +603,7 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Industry */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Industry/Niche</label>
                   <select
                     value={industry}
@@ -619,7 +619,7 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* CTA Type */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Call-to-Action</label>
                   <select
                     value={ctaType}
@@ -635,7 +635,7 @@ export default function ContentRepurposingTool() {
                 </div>
 
                 {/* Emoji Level */}
-                <div className="space-y-2">
+                <div className="space-y-2 min-w-0">
                   <label className="text-sm font-medium text-gray-300">Emoji Usage</label>
                   <select
                     value={emojiLevel}
@@ -688,7 +688,7 @@ export default function ContentRepurposingTool() {
                       setCtaType("engagement")
                       setEmojiLevel("low")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
                     Tech Professional
                   </Button>
@@ -704,7 +704,7 @@ export default function ContentRepurposingTool() {
                       setCtaType("engagement")
                       setEmojiLevel("high")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
                     Casual Social
                   </Button>
@@ -720,7 +720,7 @@ export default function ContentRepurposingTool() {
                       setCtaType("newsletter-signup")
                       setEmojiLevel("medium")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
                     Business Newsletter
                   </Button>
@@ -736,7 +736,7 @@ export default function ContentRepurposingTool() {
                       setCtaType("follow")
                       setEmojiLevel("low")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
                     Educational Content
                   </Button>
@@ -752,7 +752,7 @@ export default function ContentRepurposingTool() {
                       setCtaType("engagement")
                       setEmojiLevel("high")
                     }}
-                    className="glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
+                    className="w-full sm:w-auto glass-button text-white border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300"
                   >
                     Viral Content
                   </Button>
@@ -768,11 +768,11 @@ export default function ContentRepurposingTool() {
                       setCtaType("")
                       setEmojiLevel("")
                     }}
-                    className="glass-button border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-gray-400"
+                    className="w-full sm:w-auto glass-button border-white/20 hover:border-white/40 hover:scale-105 transition-all duration-300 text-gray-400"
                   >
                     Clear All
-                  </Button>            
-                  </div>
+                  </Button>
+                </div>
               </div>
             </CardContent>
           )}
