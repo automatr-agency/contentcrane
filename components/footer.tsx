@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Twitter, Origami } from "lucide-react"
+import { Instagram, Twitter, Youtube, Origami } from "lucide-react"
 
 export function Footer() {
   return (
@@ -33,6 +33,13 @@ export function Footer() {
                 className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
               >
                 <Twitter className="w-4 h-4" />
+              </Link>
+              <Link
+                href="https://www.youtube.com/@automatrx"
+                target="__blank"
+                className="w-8 h-8 glass rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110"
+              >
+                <Youtube className="w-4 h-4" />
               </Link>
             </div>
           </div>
